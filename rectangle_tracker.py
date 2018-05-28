@@ -98,8 +98,8 @@ def run_main():
     corner_history = []
 
     video_feed = cv2.VideoCapture(VIDEO_FILE_LOCATION)
-    video_feed.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH)
-    video_feed.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)
+    video_feed.set(cv2.CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH)
+    video_feed.set(cv2.CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)
 
     frame_count = 0
     fps_time = time()
@@ -141,7 +141,7 @@ def run_main():
         # 4) refine corners with subpixel corner finder
 
         # step 1
-        contours, _ = cv2.findContours(bin_img, cv2.RETR_EXTERNAL,
+        img, contours, _ = cv2.findContours(bin_img, cv2.RETR_EXTERNAL,
                                                 cv2.CHAIN_APPROX_SIMPLE)
         biggest_contour = max(contours, key=cv2.contourArea)
 
